@@ -8,9 +8,9 @@ Setup
 -----
 After you install Vagrant:
 
-```python
-$ git clone git://github.com/UT-Austin/Python-VM.git
-$ cd Python-VM/
-$ vagrant box add base http://files.vagrantup.com/lucid32.box
-$ vagrant up
+```bash
+git clone git://github.com/UT-Austin/Python-VM.git
+cd Python-VM/
+vagrant box add base http://files.vagrantup.com/lucid32.box
+vagrant up
 ```
