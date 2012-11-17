@@ -38,6 +38,11 @@ Exec {
         '/opt/vagrant_ruby/bin',
     ]
 }
+Service {
+    path => [
+        '/etc/init.d',
+    ]
+}
 
 group {'puppet':
     ensure => 'present',
@@ -84,25 +89,24 @@ exec {'get_pype_installer':
     cwd => $pype_dir,
     command => "wget ${installer_url} --output-document=${local_installer_path}",
     require => File[$pype_dir],
-    unless => "stat ${local_installer_path}",
+    unless => "test -f ${local_installer_path}",
 }
 
 exec {'install_pype_tools':
     cwd => $pype_dir,
     # This is super obtuse, but will pick the right tools version
-    command => "yes bad | python $local_installer_path install | grep -e ') ${pype_tools_version}$' | sed 's/^\\s\\+\\([0-9]\\+\\)).*$/\\1\\n/' | sudo python $local_installer_path $pype_install_options ",
+    command => "yes bad | python ${local_installer_path} install | grep -e ') ${pype_tools_version}$' | sed 's/^\\s\\+\\([0-9]\\+\\)).*$/\\1/' | sudo python ${local_installer_path} install ${pype_install_options}",
     require => [Package[$pype_requirements],
                 Exec['get_pype_installer']],
-    unless => "stat ${pype_dir}/${pype_tools_version}",
     timeout => 0,
 }
 
 exec {'autopype':
     cwd => '/home/vagrant',
-    command => "echo \"source $(ls $pype_dir/activate* | tail -1) && cd /pype\" >> .bashrc && touch ${flag_dir}/autopype",
+    command => "echo \"source `ls ${pype_dir}/activate* | tail -1` && cd /pype\" >> .bashrc && touch ${flag_dir}/autopype",
     require => [Exec['install_pype_tools'],
                 File[$flag_dir]],
-    unless => 'stat ${flag_dir}/autopype',
+    creates => "${flag_dir}/autopype",
 }
 
 exec {'setup_stunnel':
@@ -123,13 +127,13 @@ exec {'vncserver':
 }
 
 #exec {'openbox':
-#    environment => ['DISPLAY="localhost:8001"'],
+#    environment => ['DISPLAY="localhost:8001.0"'],
 #    require => Exec['vncserver'],
 #}
 
 exec {'clientbroker':
-    environment => ['DISPLAY="localhost:8001"'],
-    command => "java -jar $(ls ${pype_dir}/${pype_tools_version}/clientbroker-*.jar | tail -1)",
+    environment => ['DISPLAY="localhost:8001.0"'],
+    command => "java -jar `ls ${pype_dir}/${pype_tools_version}/clientbroker-*.jar | tail -1`",
     unless => 'pgrep clientbroker',
     require => [Exec['install_pype_tools'],
                 Exec['vncserver']],
