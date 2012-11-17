@@ -3,7 +3,7 @@
 *.pyc
 local_settings.py
 .vagrant
-pype
+/pype
 cacert.pem
 clientkeycert.pem
 stunnel.conf
