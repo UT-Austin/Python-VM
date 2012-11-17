@@ -29,7 +29,7 @@ vagrant up
 Windows does not support `vagrant ssh`, so now you will need to use
 an external SSH client to access the VM.
 
-1.  Download [PuTTY][]
+1.  Download and install [PuTTY][]
 1.  The SSH key that Vagrant provides needs to be converted in order to work
     with PuTTY, so run `C:\Program Files (x86)\PuTTY\puttygen.exe`
 1.  Now click `Load`, and navigate to the `.vagrant.d` directory in your home
