@@ -2,3 +2,9 @@
 *.pot
 *.pyc
 local_settings.py
+.vagrant
+pype
+cacert.pem
+clientkeycert.pem
+stunnel.conf
+custom.csv
