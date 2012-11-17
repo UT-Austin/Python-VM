@@ -1,3 +1,7 @@
+# == Class: pype
+#
+# Provision pype
+#
 class pype {
     $pype_requirements = ['python2.6-dev',
                           'libsasl2-dev',
@@ -15,7 +19,7 @@ class pype {
     class {'services': }
 
     notify {'pype_setup_complete':
-        message => "Your PyPE environment is set up and running.",
+        message => 'Your PyPE environment is set up and running.',
         require => [Exec['install_pype_tools'],
                     Service['stunnel4'],
                     Exec['clientbroker']],

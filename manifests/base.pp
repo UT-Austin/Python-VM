@@ -3,6 +3,7 @@ File {
     group => 0,
     mode => 0644,
 }
+
 Exec {
     path => [
         '/usr/local/sbin',
@@ -14,6 +15,7 @@ Exec {
         '/opt/vagrant_ruby/bin',
     ]
 }
+
 Service {
     path => [
         '/etc/init.d',
@@ -25,11 +27,17 @@ group {'puppet':
 }
 
 file {'/etc/motd':
-    content => "Ceci n'est pas une PyPE.",
+    content => 'Ceci n\'est pas une PyPE.',
 }
 
 exec {'apt_update':
-    command => "sudo apt-get update && sudo apt-get upgrade -y",
+    command => '/usr/bin/sudo /usr/bin/apt-get update',
+}
+
+exec {'apt_upgrade':
+    command => '/usr/bin/sudo /usr/bin/apt-get upgrade -y',
+    require => Exec['apt_update'],
+    timeout => 0,
 }
 
 class {'pype': }
