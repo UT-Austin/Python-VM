@@ -5,7 +5,7 @@ Virtual Machine for Python Development
 
 ## Setup ##
 
-After you install Vagrant:
+After you install [Vagrant:]: http://vagrantup.com
 
 ### Linux ###
 ```bash
