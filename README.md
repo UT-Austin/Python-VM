@@ -1,3 +1,5 @@
+[![Build Status](https://api.travis-ci.org/UT-Austin/Python-VM.png)](https://travis-ci.org/UT-Austin/Python-VM)
+
 # Python-VM #
 
 Virtual Machine for Python Development
