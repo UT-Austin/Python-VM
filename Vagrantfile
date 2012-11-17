@@ -37,6 +37,15 @@ Vagrant::Config.run do |config|
     puppet.manifest_file  = "base.pp"
     #puppet.options        = "--verbose --debug"
     puppet.module_path    = "manifests/modules/"
+    puppet.facter         = {
+        "installer_url"         => "https://pype.its.utexas.edu/tools/install/bootstrap/latest/",
+        "pype_dir"              => "/pype",
+        "pype_install_options"  => "-o",
+        "pype_tools_version"    => "26.3.2",
+        "stunnel_cacert"        => "/vagrant/cacert.pem",
+        "stunnel_clientkeycert" => "/vagrant/clientkeycert.pem",
+        "stunnel_conf"          => "/vagrant/stunnel.conf",
+    }
   end
 
 end
