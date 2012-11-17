@@ -13,8 +13,6 @@ git clone git://github.com/UT-Austin/Python-VM.git
 cd Python-VM/
 vagrant up
 vagrant ssh
-cd /home/trecs/pype/
-source activate-26.3.4-rc2
 ```
 
 ### Windows ###
@@ -23,11 +21,8 @@ start menu)
 
 Run the following commands:
 ```cmd
-\# Checkout this repository using TortoiseGit or run the following
 git clone git://github.com/UT-Austin/Python-VM.git
-\# Navigate to the directory of the project you just cloned
 cd Python-VM
-\# Start the VM
 vagrant up
 ```
 
@@ -41,7 +36,7 @@ an external SSH client to access the VM.
     directory.
 1.  Change the file type dropdown next to `File name`, so that it lists All
     Files.
-1.  Select `insecure\_private\_key`
+1.  Select `insecure_private_key`
 1.  Now click `Save private key`. Click `Yes` when it complains about not having
     a password (this doesn't matter since it is just for use with the VM).
 1.  Save the file with a `.ppk` suffix, and remember where you save it.
