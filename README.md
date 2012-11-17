@@ -5,7 +5,7 @@ Virtual Machine for Python Development
 
 ## Setup ##
 
-After you install [Vagrant:]: http://vagrantup.com
+After you install [Vagrant][]:
 
 ### Linux ###
 ```bash
@@ -57,7 +57,10 @@ an external SSH client to access the VM.
     *   Click `Open`, ignore a scary security warning if it shows up, and you
         should now be sitting at a command line inside your VM.
 
-[PuTTY]: http://www.chiark.greenend.org.uk/~sgtatham/putty/
-
 ### How do I customize this thing? ###
 TODO: explain `custom.csv`
+
+
+
+[Vagrant]: http://vagrantup.com
+[PuTTY]: http://www.chiark.greenend.org.uk/~sgtatham/putty/
