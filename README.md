@@ -22,20 +22,21 @@ Open a command prompt (type `cmd` at the run or find dialog in the Windows
 start menu)
 
 Run the following commands:
-    \# Checkout this repository using TortoiseGit or run the following
-    git clone git://github.com/UT-Austin/Python-VM.git
-    \# Navigate to the directory of the project you just cloned
-    cd Python-VM
-    \# Start the VM
-    vagrant up
+```cmd
+\# Checkout this repository using TortoiseGit or run the following
+git clone git://github.com/UT-Austin/Python-VM.git
+\# Navigate to the directory of the project you just cloned
+cd Python-VM
+\# Start the VM
+vagrant up
+```
 
 Windows does not support `vagrant ssh`, so now you will need to use
 an external SSH client to access the VM.
 
 1.  Download [PuTTY][]
 1.  The SSH key that Vagrant provides needs to be converted in order to work
-    with PuTTY, so run the following:
-        C:\Program Files (x86)\PuTTY\puttygen.exe
+    with PuTTY, so run `C:\Program Files (x86)\PuTTY\puttygen.exe`
 1.  Now click `Load`, and navigate to the `.vagrant.d` directory in your home
     directory.
 1.  Change the file type dropdown next to `File name`, so that it lists All
