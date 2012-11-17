@@ -58,9 +58,7 @@ an external SSH client to access the VM.
         should now be sitting at a command line inside your VM.
 
 ### How do I customize this thing? ###
-TODO: explain `custom.csv`
-
-
+You can make customizations by editing puppet.facter inside of the Vagrant file.
 
 [Vagrant]: http://vagrantup.com
 [PuTTY]: http://www.chiark.greenend.org.uk/~sgtatham/putty/
