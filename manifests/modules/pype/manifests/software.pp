@@ -35,7 +35,7 @@ class pype::software {
     }
 
     $wget_pype_options = "--output-document=${local_installer_path}"
-    $wget_pype = "wget ${::installer_url} ${wget_pype_options}"
+    $wget_pype = "/usr/bin/wget ${::installer_url} ${wget_pype_options}"
     exec {'get_pype_installer':
         cwd     => $::pype_dir,
         command => $wget_pype,
@@ -46,13 +46,14 @@ class pype::software {
     $run_pype_installer_base = "sudo python ${local_installer_path} install"
     $grep_pype_versions = "grep -e ') ${::pype_tools_version}$'"
     $sed_num = "sed 's/^\\s\\+\\([0-9]\\+\\)).*$/\\1/'"
-    $get_pype_version_num = "yes bad | ${grep_pype_versions} | ${sed_num}"
+    $filter_num = "${grep_pype_versions} | ${sed_num}"
+    $get_pype_version = "yes bad | ${run_pype_installer_base} | ${filter_num}"
 
     $run_pype_installer = "${run_pype_installer_base} ${::pype_install_options}"
 
     exec {'install_pype_tools':
         cwd     => $::pype_dir,
-        command => "${get_pype_version_num} | ${run_pype_installer}",
+        command => "${get_pype_version} | ${run_pype_installer}",
         require => [Package[$pype::pype_requirements],
                     Exec['get_pype_installer']],
         timeout => 0,
